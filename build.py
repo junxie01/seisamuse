@@ -110,13 +110,22 @@ def load_post(filepath):
     asset_dir = filepath.parent / filepath.stem
     has_assets = asset_dir.is_dir()
 
-    # Rewrite relative image paths in HTML to point to /blog/assets/<slug>/
+    # Process Hexo asset_img tags: {% asset_img filename alt_text %}
+    import re
     if has_assets:
-        # Replace src="image.png" with src="/blog/assets/<slug>/image.png"
-        import re
+        # Replace {% asset_img filename alt_text %} with <img src="..." alt="alt_text">
+        content_html = re.sub(
+            r'\{%\s*asset_img\s+(\S+)\s*(.*?)\s*%\}',
+            f'<img src="/seisamuse/blog/assets/{slug}/\\1" alt="\\2">',
+            content_html,
+        )
+
+    # Rewrite relative image paths in HTML to point to /seisamuse/blog/assets/<slug>/
+    if has_assets:
+        # Replace src="image.png" with src="/seisamuse/blog/assets/<slug>/image.png"
         content_html = re.sub(
             r'src="(?!http|/|data:)([^"]+)"',
-            f'src="/blog/assets/{slug}/\\1"',
+            f'src="/seisamuse/blog/assets/{slug}/\\1"',
             content_html,
         )
 
