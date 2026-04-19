@@ -367,6 +367,11 @@ def build_site():
             shutil.copytree(src, dst)
             print(f"  Copied {asset_dir_name}/")
 
+    # Create .nojekyll file to disable Jekyll on GitHub Pages
+    nojekyll_path = SITE_DIR / ".nojekyll"
+    nojekyll_path.write_text("", encoding="utf-8")
+    print(f"  Created .nojekyll")
+
     print(f"\n[6/6] Done! Site built in '{SITE_DIR.relative_to(BASE_DIR)}/'")
     print(f"  Total: {len(posts)} posts, {total_pages} blog pages, {len(link_pages)} link sub-pages, 4 static pages")
     print(f"{'='*50}\n")
