@@ -7,7 +7,7 @@ tags:
 abbrlink: 8cd95a7c
 date: 2026-03-21 10:36:31
 ---
-&emsp;&emsp;我又试着做了两个网页，一个是[论文周报](https://www.seis-jun.xyz/paper_weekly/frontend/)，另一个是[每周地震](https://www.seis-jun.xyz/earthquake_weekly/)。
+  我又试着做了两个网页，一个是[论文周报](https://www.seis-jun.xyz/paper_weekly/frontend/)，另一个是[每周地震](https://www.seis-jun.xyz/earthquake_weekly/)。
 <!--less-->
 &emsp;&emsp;这次用的是[Andriod Studio](https://developer.android.com/studio)。套路明白了，大概现在的一些IDE平台都嵌入了大预言模型，可以对话然后让AI帮你做事。这应该跟openclaw差不太多，只是相比起来openclaw给的权限太高，可以操纵你的电脑所有内容，而这些IDE只能操作当前目录。
 &emsp;&emsp;好了分别介绍一下我的两个网页。首先是论文周报：
