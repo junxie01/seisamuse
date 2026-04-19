@@ -126,11 +126,23 @@ def load_post(filepath):
             f'src="/seisamuse/blog/assets/{slug}/\\1"',
             content_html,
         )
+        # Also fix absolute /images/ paths from markdown rendering
+        content_html = re.sub(
+            r'src="/images/',
+            '/seisamuse/images/',
+            content_html,
+        )
     else:
         # No asset folder exists, replace asset_img with global images path
         content_html = re.sub(
             r'\{%\s*asset_img\s+(\S+)\s*(.*?)\s*%\}',
             f'<img src="/seisamuse/images/\\1" alt="\\2">',
+            content_html,
+        )
+        # Also fix absolute /images/ paths from markdown rendering
+        content_html = re.sub(
+            r'src="/images/',
+            '/seisamuse/images/',
             content_html,
         )
 
