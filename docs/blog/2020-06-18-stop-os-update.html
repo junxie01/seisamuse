@@ -45,7 +45,7 @@
   <div class="post-content">
     <p>&emsp;&emsp;我的HP笔记本上的Linux系统安装的是Elementary OS。这是个基于Ubuntu的注重界面美观的系统。是挺漂亮的，但几乎每天那个引用中心都会跳出来，帮我检查更新。</p>
 <!-- more -->
-<p>{% asset_img app.png 应用中心 %}
+<p><img src="/seisamuse/images/app.png" alt="应用中心">
 &emsp;&emsp;这很烦人，尤其是还有出错，不能忍。所以必须让它停止自己更新啊。解决办法是这样。在文件/etc/apt/apt.conf.d/10periodic中将第一行的1改为0，成这样：</p>
 <pre class="highlight"><code>APT::Periodic::Update-Package-Lists &quot;0&quot;;
 APT::Periodic::Download-Upgradeable-Packages &quot;0&quot;;

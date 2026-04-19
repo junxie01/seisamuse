@@ -111,21 +111,26 @@ def load_post(filepath):
     has_assets = asset_dir.is_dir()
 
     # Process Hexo asset_img tags: {% asset_img filename alt_text %}
+    # These images are in the post's asset folder (if it exists) or global images/ folder
     import re
     if has_assets:
-        # Replace {% asset_img filename alt_text %} with <img src="..." alt="alt_text">
+        # Replace {% asset_img filename alt_text %} with <img src="/seisamuse/blog/assets/<slug>/filename">
         content_html = re.sub(
             r'\{%\s*asset_img\s+(\S+)\s*(.*?)\s*%\}',
             f'<img src="/seisamuse/blog/assets/{slug}/\\1" alt="\\2">',
             content_html,
         )
-
-    # Rewrite relative image paths in HTML to point to /seisamuse/blog/assets/<slug>/
-    if has_assets:
-        # Replace src="image.png" with src="/seisamuse/blog/assets/<slug>/image.png"
+        # Also rewrite relative markdown image paths to point to blog assets folder
         content_html = re.sub(
             r'src="(?!http|/|data:)([^"]+)"',
             f'src="/seisamuse/blog/assets/{slug}/\\1"',
+            content_html,
+        )
+    else:
+        # No asset folder exists, replace asset_img with global images path
+        content_html = re.sub(
+            r'\{%\s*asset_img\s+(\S+)\s*(.*?)\s*%\}',
+            f'<img src="/seisamuse/images/\\1" alt="\\2">',
             content_html,
         )
 
