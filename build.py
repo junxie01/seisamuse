@@ -25,9 +25,9 @@ CONTENT_DIR = BASE_DIR / "content"
 POSTS_DIR = CONTENT_DIR / "posts"
 TEMPLATES_DIR = BASE_DIR / "templates"
 
-# Direct deployment: output to site/ directory
+# Direct deployment: output to docs/ directory for GitHub Pages
 SUBDIR = ""
-SITE_DIR = BASE_DIR / "site"
+SITE_DIR = BASE_DIR / "docs"
 
 SITE_NAME = "SEISAMUSE"
 AUTHOR = "Jun Xie"
