@@ -129,7 +129,7 @@ def load_post(filepath):
         # Also fix absolute /images/ paths from markdown rendering
         content_html = re.sub(
             r'src="/images/',
-            '/seisamuse/images/',
+            'src="/seisamuse/images/',
             content_html,
         )
     else:
@@ -142,7 +142,7 @@ def load_post(filepath):
         # Also fix absolute /images/ paths from markdown rendering
         content_html = re.sub(
             r'src="/images/',
-            '/seisamuse/images/',
+            'src="/seisamuse/images/',
             content_html,
         )
 
