@@ -218,7 +218,7 @@ def build_site():
 
     # Common template context — use absolute paths for root deployment
     common = {
-        "root": "/",
+        "root": "/seisamuse/",
         "year": year,
     }
 
