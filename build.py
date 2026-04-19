@@ -367,6 +367,15 @@ def build_site():
             shutil.copytree(src, dst)
             print(f"  Copied {asset_dir_name}/")
 
+    # Copy CSS files from site/css/ to SITE_DIR/css/
+    css_src = BASE_DIR / "site" / "css"
+    css_dst = SITE_DIR / "css"
+    if css_src.exists():
+        if css_dst.exists():
+            shutil.rmtree(css_dst)
+        shutil.copytree(css_src, css_dst)
+        print("  Copied css/")
+
     # Create .nojekyll file to disable Jekyll on GitHub Pages
     nojekyll_path = SITE_DIR / ".nojekyll"
     nojekyll_path.write_text("", encoding="utf-8")
@@ -377,7 +386,7 @@ def build_site():
     print(f"{'='*50}\n")
 
 
-def serve(port=8000):
+def serve(port=3000):
     """Start a local HTTP server for preview."""
     import http.server
     import functools
